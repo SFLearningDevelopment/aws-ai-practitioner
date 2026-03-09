@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domain 6 — Responsible AI &amp; Ethics</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  :root { --accent-color: #0d7f7f; --badge-bg: #d6f0f0; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html">⌂ Index</a>
+  <a href="domain1-core-ml.html">D1: Core ML</a>
+  <a href="domain2-aws-ai-services.html">D2: AWS AI Services</a>
+  <a href="domain3-generative-ai.html">D3: Generative AI</a>
+  <a href="domain4-bedrock.html">D4: Bedrock</a>
+  <a href="domain5-sagemaker-mlops.html">D5: SageMaker</a>
+  <a href="domain6-responsible-ai.html" class="active">D6: Responsible AI</a>
+  <a href="domain7-security.html">D7: Security</a>
+</nav>
+
+<div class="page-header">
+  <div>
+    <h1><span class="domain-label">Responsible AI</span> &amp; Ethics</h1>
+    <div class="meta">Domain 6 · AIF-C01 · 11 Key Concepts</div>
+  </div>
+  <span class="domain-badge">Domain 6</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:230px">Concept</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="term">Responsible AI</td>
+      <td class="def">Developing and deploying AI that is fair, transparent, explainable, privacy-preserving, and safe.</td>
+    </tr>
+    <tr>
+      <td class="term">Bias (AI)</td>
+      <td class="def">Systematic errors in model outputs due to biased training data or flawed model design. Can cause unfair outcomes.<br>
+        <span class="tip">Fix: diverse data, SageMaker Clarify, regular audits</span></td>
+    </tr>
+    <tr>
+      <td class="term">Fairness</td>
+      <td class="def">Model treats all groups equitably. No disproportionate harm to protected classes (gender, race, age, etc.).</td>
+    </tr>
+    <tr>
+      <td class="term">Explainability / XAI</td>
+      <td class="def">Ability to understand and explain how a model makes decisions. Critical in regulated industries.<br>
+        <span class="tip">Tools: SHAP, LIME, SageMaker Clarify</span></td>
+    </tr>
+    <tr>
+      <td class="term">Transparency</td>
+      <td class="def">Openness about how a model was built, what data was used, and how it makes decisions.</td>
+    </tr>
+    <tr>
+      <td class="term">Privacy (AI)</td>
+      <td class="def">Protecting personal data used in training and inference.<br>
+        <span class="tip">Techniques: differential privacy, data anonymization, PII redaction</span></td>
+    </tr>
+    <tr>
+      <td class="term">Robustness</td>
+      <td class="def">Model performs reliably across diverse inputs, including edge cases and adversarial inputs.</td>
+    </tr>
+    <tr>
+      <td class="term">Human-in-the-Loop (HITL)</td>
+      <td class="def">Including human oversight in AI decision-making, especially for high-stakes or uncertain outputs.</td>
+    </tr>
+    <tr>
+      <td class="term">Model Card</td>
+      <td class="def">Documentation summarizing a model's purpose, performance, limitations, and ethical considerations.</td>
+    </tr>
+    <tr>
+      <td class="term">AWS AI Service Cards</td>
+      <td class="def">AWS's transparency documents for managed AI services — describing intended use, limitations, and responsible AI practices.</td>
+    </tr>
+    <tr>
+      <td class="term">Prompt Injection</td>
+      <td class="def">Attack where malicious instructions are embedded in user input to hijack LLM behavior. A key GenAI security risk.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="footer">
+  <span>AWS AI Practitioner · AIF-C01 · Domain 6 of 7</span>
+  <span><a href="domain7-security.html" style="color:inherit">Next: Domain 7 — Security &amp; Compliance →</a></span>
+</div>
+
+</body>
+</html>
