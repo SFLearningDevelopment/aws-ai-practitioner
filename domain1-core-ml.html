@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domain 1 — Core AI / ML Concepts</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  :root { --accent-color: #1a6eb5; --badge-bg: #ddeeff; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html">⌂ Index</a>
+  <a href="domain1-core-ml.html" class="active">D1: Core ML</a>
+  <a href="domain2-aws-ai-services.html">D2: AWS AI Services</a>
+  <a href="domain3-generative-ai.html">D3: Generative AI</a>
+  <a href="domain4-bedrock.html">D4: Bedrock</a>
+  <a href="domain5-sagemaker-mlops.html">D5: SageMaker</a>
+  <a href="domain6-responsible-ai.html">D6: Responsible AI</a>
+  <a href="domain7-security.html">D7: Security</a>
+</nav>
+
+<div class="page-header">
+  <div>
+    <h1>Core AI / <span class="domain-label">Machine Learning</span> Concepts</h1>
+    <div class="meta">Domain 1 · AIF-C01 · 15 Key Terms</div>
+  </div>
+  <span class="domain-badge">Domain 1</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:220px">Term</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="term">Artificial Intelligence (AI)</td>
+      <td class="def">Systems that simulate human intelligence to perform tasks like reasoning, learning, and problem solving.</td>
+    </tr>
+    <tr>
+      <td class="term">Machine Learning (ML)</td>
+      <td class="def">A subset of AI where models learn patterns from data to make predictions — without being explicitly programmed.<br>
+        <span class="tip">⟶ Data → Train → Predict</span></td>
+    </tr>
+    <tr>
+      <td class="term">Deep Learning (DL)</td>
+      <td class="def">ML using multi-layered neural networks. Excels at images, text, and audio. Requires large datasets and compute.</td>
+    </tr>
+    <tr>
+      <td class="term">Supervised Learning</td>
+      <td class="def">Model trained on <em>labeled</em> data (input → known output). Used for classification &amp; regression.<br>
+        <span class="tip">Example: spam detection, price prediction</span></td>
+    </tr>
+    <tr>
+      <td class="term">Unsupervised Learning</td>
+      <td class="def">Model finds patterns in <em>unlabeled</em> data. Used for clustering, anomaly detection, dimensionality reduction.<br>
+        <span class="tip">Example: customer segmentation</span></td>
+    </tr>
+    <tr>
+      <td class="term">Reinforcement Learning</td>
+      <td class="def">Agent learns by trial-and-error, receiving rewards/penalties for actions in an environment.<br>
+        <span class="tip">Example: game-playing bots, robotics</span></td>
+    </tr>
+    <tr>
+      <td class="term">Training Data</td>
+      <td class="def">Dataset used to teach the model. Quality &amp; quantity directly affect model performance.</td>
+    </tr>
+    <tr>
+      <td class="term">Inference</td>
+      <td class="def">Using a trained model to make predictions on new, unseen data. (Training ≠ Inference)</td>
+    </tr>
+    <tr>
+      <td class="term">Overfitting</td>
+      <td class="def">Model memorizes training data but fails on new data.<br>
+        <span class="tip">Fix: more data, regularization, dropout</span></td>
+    </tr>
+    <tr>
+      <td class="term">Underfitting</td>
+      <td class="def">Model is too simple to capture patterns.<br>
+        <span class="tip">Fix: more complex model or more features</span></td>
+    </tr>
+    <tr>
+      <td class="term">Feature Engineering</td>
+      <td class="def">Selecting, transforming, or creating input variables to improve model accuracy.</td>
+    </tr>
+    <tr>
+      <td class="term">Model Evaluation Metrics</td>
+      <td class="def">
+        <strong>Accuracy</strong> — % correct<br>
+        <strong>Precision</strong> — of predicted positives, how many are real<br>
+        <strong>Recall</strong> — of real positives, how many did we catch<br>
+        <strong>F1 Score</strong> — harmonic mean of precision &amp; recall<br>
+        <strong>AUC-ROC</strong> — overall discriminative power
+      </td>
+    </tr>
+    <tr>
+      <td class="term">Confusion Matrix</td>
+      <td class="def">Table showing TP, TN, FP, FN. Used to evaluate classification model performance.</td>
+    </tr>
+    <tr>
+      <td class="term">Hyperparameter</td>
+      <td class="def">Configuration set <em>before</em> training (e.g. learning rate, number of layers). Not learned from data.</td>
+    </tr>
+    <tr>
+      <td class="term">Cross-validation</td>
+      <td class="def">Technique to assess model generalization by splitting data into folds and rotating train/test sets.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="footer">
+  <span>AWS AI Practitioner · AIF-C01 · Domain 1 of 7</span>
+  <span><a href="domain2-aws-ai-services.html" style="color:inherit">Next: Domain 2 — AWS AI Services →</a></span>
+</div>
+
+</body>
+</html>
