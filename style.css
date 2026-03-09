@@ -1,5 +1,5 @@
 /* AWS AI Practitioner Cheat Sheet — Shared Styles */
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
   --bg:       #f5f7fa;
@@ -32,8 +32,8 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 14px;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 15px;
   line-height: 1.6;
   padding: 36px 28px;
   max-width: 960px;
@@ -56,9 +56,9 @@ body {
 }
 
 .page-header h1 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Merriweather Sans', sans-serif;
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text);
   letter-spacing: -0.01em;
 }
@@ -171,18 +171,18 @@ td:first-child {
 }
 
 .term {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12.5px;
-  font-weight: 500;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
   color: var(--accent-color);
   min-width: 190px;
   width: 220px;
 }
 
 .def {
-  font-size: 13.5px;
+  font-size: 15px;
   color: #2d3140;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .def strong { color: var(--text); }
