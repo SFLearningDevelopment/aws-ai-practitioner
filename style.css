@@ -189,15 +189,15 @@ td:first-child {
 
 .tip {
   display: inline-block;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
-  margin-top: 5px;
-  padding: 2px 8px;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 6px;
+  padding: 3px 10px;
   border-radius: 3px;
-  background: var(--tip-bg);
-  color: var(--muted);
-  border: 1px solid var(--border);
-  letter-spacing: 0.02em;
+  background: #e4e9f2;
+  color: #3a4260;
+  border: 1px solid #b0b8cc;
 }
 
 /* ── FOOTER ── */
