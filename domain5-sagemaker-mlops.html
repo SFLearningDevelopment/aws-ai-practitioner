@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domain 5 — SageMaker &amp; MLOps</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  :root { --accent-color: #b06010; --badge-bg: #fdecd6; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html">⌂ Index</a>
+  <a href="domain1-core-ml.html">D1: Core ML</a>
+  <a href="domain2-aws-ai-services.html">D2: AWS AI Services</a>
+  <a href="domain3-generative-ai.html">D3: Generative AI</a>
+  <a href="domain4-bedrock.html">D4: Bedrock</a>
+  <a href="domain5-sagemaker-mlops.html" class="active">D5: SageMaker</a>
+  <a href="domain6-responsible-ai.html">D6: Responsible AI</a>
+  <a href="domain7-security.html">D7: Security</a>
+</nav>
+
+<div class="page-header">
+  <div>
+    <h1>Amazon <span class="domain-label">SageMaker</span> &amp; MLOps</h1>
+    <div class="meta">Domain 5 · AIF-C01 · 13 Key Concepts</div>
+  </div>
+  <span class="domain-badge">Domain 5</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:230px">Concept</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="term">Amazon SageMaker</td>
+      <td class="def">End-to-end ML platform: data prep → build → train → tune → deploy → monitor. One of the most exam-heavy topics.</td>
+    </tr>
+    <tr>
+      <td class="term">SageMaker Studio</td>
+      <td class="def">Web-based IDE for the full ML lifecycle. Notebooks, experiments, pipelines, and deployment — all in one place.</td>
+    </tr>
+    <tr>
+      <td class="term">SageMaker Autopilot</td>
+      <td class="def">AutoML feature — automatically tries many algorithms and hyperparameters to find the best model for your data.</td>
+    </tr>
+    <tr>
+      <td class="term">SageMaker Canvas</td>
+      <td class="def">No-code ML UI for business analysts. Build and deploy models with no programming required.</td>
+    </tr>
+    <tr>
+      <td class="term">SageMaker Ground Truth</td>
+      <td class="def">Managed data labeling service. Uses human workers (via Mechanical Turk or private workforce) + automated labeling.</td>
+    </tr>
+    <tr>
+      <td class="term">SageMaker Pipelines</td>
+      <td class="def">CI/CD for ML workflows. Automate the steps from data prep to model deployment as a repeatable pipeline.</td>
+    </tr>
+    <tr>
+      <td class="term">SageMaker Model Monitor</td>
+      <td class="def">Detects model quality issues in production — data drift, concept drift, bias, and prediction quality degradation.</td>
+    </tr>
+    <tr>
+      <td class="term">SageMaker Feature Store</td>
+      <td class="def">Centralized repository to store, share, and reuse ML features across teams and models.</td>
+    </tr>
+    <tr>
+      <td class="term">SageMaker Clarify</td>
+      <td class="def">Detects bias in data and models, and provides explainability reports (SHAP values). Exam favourite.</td>
+    </tr>
+    <tr>
+      <td class="term">MLOps</td>
+      <td class="def">DevOps principles applied to ML: automate training, versioning, testing, deployment, and monitoring of models.</td>
+    </tr>
+    <tr>
+      <td class="term">Model Registry</td>
+      <td class="def">Catalog of trained model versions with metadata, approval status, and deployment history.</td>
+    </tr>
+    <tr>
+      <td class="term">Data Drift</td>
+      <td class="def">Input data distribution shifts over time, causing model performance to degrade. Requires retraining.<br>
+        <span class="tip">Detected by: SageMaker Model Monitor</span></td>
+    </tr>
+    <tr>
+      <td class="term">Concept Drift</td>
+      <td class="def">The relationship between inputs and outputs changes over time (world changes, model becomes stale).</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="footer">
+  <span>AWS AI Practitioner · AIF-C01 · Domain 5 of 7</span>
+  <span><a href="domain6-responsible-ai.html" style="color:inherit">Next: Domain 6 — Responsible AI →</a></span>
+</div>
+
+</body>
+</html>
