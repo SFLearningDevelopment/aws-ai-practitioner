@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domain 4 — Amazon Bedrock</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  :root { --accent-color: #7034b8; --badge-bg: #ecdff8; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html">⌂ Index</a>
+  <a href="domain1-core-ml.html">D1: Core ML</a>
+  <a href="domain2-aws-ai-services.html">D2: AWS AI Services</a>
+  <a href="domain3-generative-ai.html">D3: Generative AI</a>
+  <a href="domain4-bedrock.html" class="active">D4: Bedrock</a>
+  <a href="domain5-sagemaker-mlops.html">D5: SageMaker</a>
+  <a href="domain6-responsible-ai.html">D6: Responsible AI</a>
+  <a href="domain7-security.html">D7: Security</a>
+</nav>
+
+<div class="page-header">
+  <div>
+    <h1>Amazon <span class="domain-label">Bedrock</span></h1>
+    <div class="meta">Domain 4 · AIF-C01 · 9 Key Concepts</div>
+  </div>
+  <span class="domain-badge">Domain 4</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:240px">Concept</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="term">Amazon Bedrock</td>
+      <td class="def">Fully managed service to access foundation models via API — no infrastructure management required. Supports models from Anthropic, Meta, Cohere, Mistral, Stability AI, and Amazon Titan.</td>
+    </tr>
+    <tr>
+      <td class="term">Amazon Titan</td>
+      <td class="def">AWS's own family of foundation models. Includes <strong>Titan Text</strong> (LLM), <strong>Titan Embeddings</strong>, and <strong>Titan Image Generator</strong>.</td>
+    </tr>
+    <tr>
+      <td class="term">Bedrock Knowledge Bases</td>
+      <td class="def">Managed RAG solution. Connect data sources (e.g. S3), auto-embed &amp; store in a vector DB, then query via API.<br>
+        <span class="tip">Easiest way to build RAG on AWS — fully managed</span></td>
+    </tr>
+    <tr>
+      <td class="term">Bedrock Agents</td>
+      <td class="def">Orchestrate multi-step tasks by letting an FM autonomously call APIs and tools to complete complex goals.</td>
+    </tr>
+    <tr>
+      <td class="term">Bedrock Guardrails</td>
+      <td class="def">Define content filters, PII redaction, and topic denial lists to make FM applications safer and compliant.</td>
+    </tr>
+    <tr>
+      <td class="term">Model Customization (Bedrock)</td>
+      <td class="def">Two options:<br>
+        <strong>Fine-tuning</strong> — train on labeled input/output examples<br>
+        <strong>Continued Pre-training</strong> — train on raw unlabeled domain data</td>
+    </tr>
+    <tr>
+      <td class="term">Provisioned Throughput</td>
+      <td class="def">Purchase dedicated model capacity in Bedrock for consistent, predictable performance at scale (vs. on-demand pricing).</td>
+    </tr>
+    <tr>
+      <td class="term">Model Evaluation (Bedrock)</td>
+      <td class="def">Built-in tool to evaluate and compare FM outputs using automatic metrics or human review workflows.</td>
+    </tr>
+    <tr>
+      <td class="term">Amazon Bedrock Studio</td>
+      <td class="def">Browser-based UI for experimenting with FMs, building prompts, and prototyping Bedrock applications — no code needed.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="footer">
+  <span>AWS AI Practitioner · AIF-C01 · Domain 4 of 7</span>
+  <span><a href="domain5-sagemaker-mlops.html" style="color:inherit">Next: Domain 5 — SageMaker &amp; MLOps →</a></span>
+</div>
+
+</body>
+</html>
