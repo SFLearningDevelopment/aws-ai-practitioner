@@ -11,20 +11,20 @@
   --tip-bg:   #eef1f6;
 
   --c1: #1a6eb5;
-  --c2: #1d8a4a;
-  --c3: #c0440d;
-  --c4: #7034b8;
-  --c5: #b06010;
-  --c6: #0d7f7f;
-  --c7: #b03030;
+  --c2: #1a6eb5;
+  --c3: #1a6eb5;
+  --c4: #1a6eb5;
+  --c5: #1a6eb5;
+  --c6: #1a6eb5;
+  --c7: #1a6eb5;
 
   --bg1: #ddeeff;
-  --bg2: #d6f5e3;
-  --bg3: #fde8df;
-  --bg4: #ecdff8;
-  --bg5: #fdecd6;
-  --bg6: #d6f0f0;
-  --bg7: #fddcdc;
+  --bg2: #ddeeff;
+  --bg3: #ddeeff;
+  --bg4: #ddeeff;
+  --bg5: #ddeeff;
+  --bg6: #ddeeff;
+  --bg7: #ddeeff;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
