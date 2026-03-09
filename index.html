@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWS AI Practitioner — Cheat Sheet Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f7fa; --surface: #ffffff; --border: #c8cdd6;
+    --text: #1a1d23; --muted: #6b7280; --subtle: #e8ecf2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px; line-height: 1.6;
+    padding: 48px 28px; max-width: 860px; margin: 0 auto;
+  }
+  .top {
+    text-align: center; margin-bottom: 48px;
+    padding-bottom: 32px; border-bottom: 2px solid var(--border);
+  }
+  .top h1 {
+    font-family: 'Syne', sans-serif; font-size: 2.2rem;
+    font-weight: 800; letter-spacing: -0.02em; color: var(--text);
+  }
+  .top h1 span { color: #1a6eb5; }
+  .top p {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+    color: var(--muted); margin-top: 8px; letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--c);
+    border-radius: 6px;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .card .num {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--c); font-weight: 500; margin-bottom: 6px;
+  }
+  .card h2 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .card .count {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    margin-top: 12px; color: var(--c); letter-spacing: 0.04em;
+  }
+  .footer {
+    margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    color: var(--muted); letter-spacing: 0.04em; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>AWS <span>AI Practitioner</span><br>Exam Cheat Sheet</h1>
+  <p>AIF-C01 · 7 Domains · Click a domain to study</p>
+</div>
+
+<div class="grid">
+
+  <a class="card" href="domain1-core-ml.html" style="--c:#1a6eb5">
+    <div class="num">Domain 1</div>
+    <h2>Core AI / ML Concepts</h2>
+    <p>Supervised, unsupervised, deep learning, evaluation metrics, overfitting, features.</p>
+    <div class="count">15 terms</div>
+  </a>
+
+  <a class="card" href="domain2-aws-ai-services.html" style="--c:#1d8a4a">
+    <div class="num">Domain 2</div>
+    <h2>AWS AI / ML Services</h2>
+    <p>Rekognition, Textract, Comprehend, Lex, Kendra, Personalize, Forecast, and more.</p>
+    <div class="count">14 terms</div>
+  </a>
+
+  <a class="card" href="domain3-generative-ai.html" style="--c:#c0440d">
+    <div class="num">Domain 3</div>
+    <h2>Generative AI Fundamentals</h2>
+    <p>LLMs, RAG, prompt engineering, embeddings, hallucination, fine-tuning, temperature.</p>
+    <div class="count">18 terms</div>
+  </a>
+
+  <a class="card" href="domain4-bedrock.html" style="--c:#7034b8">
+    <div class="num">Domain 4</div>
+    <h2>Amazon Bedrock</h2>
+    <p>Managed FM API, Titan, Knowledge Bases, Agents, Guardrails, model customization.</p>
+    <div class="count">9 terms</div>
+  </a>
+
+  <a class="card" href="domain5-sagemaker-mlops.html" style="--c:#b06010">
+    <div class="num">Domain 5</div>
+    <h2>SageMaker &amp; MLOps</h2>
+    <p>Studio, Autopilot, Canvas, Clarify, Pipelines, Model Monitor, data drift.</p>
+    <div class="count">13 terms</div>
+  </a>
+
+  <a class="card" href="domain6-responsible-ai.html" style="--c:#0d7f7f">
+    <div class="num">Domain 6</div>
+    <h2>Responsible AI &amp; Ethics</h2>
+    <p>Bias, fairness, explainability, transparency, privacy, HITL, model cards.</p>
+    <div class="count">11 terms</div>
+  </a>
+
+  <a class="card" href="domain7-security.html" style="--c:#b03030">
+    <div class="num">Domain 7</div>
+    <h2>Security &amp; Compliance</h2>
+    <p>Shared responsibility, IAM, KMS, CloudTrail, Macie, PII, compliance frameworks.</p>
+    <div class="count">11 terms</div>
+  </a>
+
+</div>
+
+<div class="footer">AWS Certified AI Practitioner · AIF-C01 · Study Reference</div>
+
+</body>
+</html>
