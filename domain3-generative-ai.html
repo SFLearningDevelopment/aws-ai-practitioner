@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domain 3 — Generative AI Fundamentals</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  :root { --accent-color: #c0440d; --badge-bg: #fde8df; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html">⌂ Index</a>
+  <a href="domain1-core-ml.html">D1: Core ML</a>
+  <a href="domain2-aws-ai-services.html">D2: AWS AI Services</a>
+  <a href="domain3-generative-ai.html" class="active">D3: Generative AI</a>
+  <a href="domain4-bedrock.html">D4: Bedrock</a>
+  <a href="domain5-sagemaker-mlops.html">D5: SageMaker</a>
+  <a href="domain6-responsible-ai.html">D6: Responsible AI</a>
+  <a href="domain7-security.html">D7: Security</a>
+</nav>
+
+<div class="page-header">
+  <div>
+    <h1><span class="domain-label">Generative AI</span> Fundamentals</h1>
+    <div class="meta">Domain 3 · AIF-C01 · 18 Key Terms</div>
+  </div>
+  <span class="domain-badge">Domain 3</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:220px">Term</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="term">Generative AI</td>
+      <td class="def">AI that creates new content (text, images, audio, code) rather than just classifying or predicting.</td>
+    </tr>
+    <tr>
+      <td class="term">Foundation Model (FM)</td>
+      <td class="def">Large pre-trained model trained on massive datasets; adaptable to many tasks via fine-tuning or prompting.<br>
+        <span class="tip">Examples: Claude, Llama, Titan, Stable Diffusion</span></td>
+    </tr>
+    <tr>
+      <td class="term">Large Language Model (LLM)</td>
+      <td class="def">Foundation model specializing in text. Trained on billions of tokens to predict the next token.</td>
+    </tr>
+    <tr>
+      <td class="term">Token</td>
+      <td class="def">The basic unit an LLM processes — roughly a word or sub-word. Pricing and context limits are per-token.</td>
+    </tr>
+    <tr>
+      <td class="term">Prompt</td>
+      <td class="def">Input text sent to a generative model. Quality of output is highly dependent on prompt quality.</td>
+    </tr>
+    <tr>
+      <td class="term">Prompt Engineering</td>
+      <td class="def">Designing prompts to guide model outputs. Key techniques: zero-shot, few-shot, chain-of-thought.</td>
+    </tr>
+    <tr>
+      <td class="term">Zero-shot Prompting</td>
+      <td class="def">Model answers with no examples provided in the prompt — relies purely on pre-trained knowledge.</td>
+    </tr>
+    <tr>
+      <td class="term">Few-shot Prompting</td>
+      <td class="def">Provide a few input→output examples in the prompt so the model learns the pattern in-context.</td>
+    </tr>
+    <tr>
+      <td class="term">Chain-of-Thought (CoT)</td>
+      <td class="def">Prompting technique that asks the model to reason step-by-step before answering. Improves complex tasks.</td>
+    </tr>
+    <tr>
+      <td class="term">Context Window</td>
+      <td class="def">Maximum number of tokens a model can process at once (input + output). Larger = more context retained.</td>
+    </tr>
+    <tr>
+      <td class="term">Temperature</td>
+      <td class="def">Controls randomness of output.<br>
+        <span class="tip">Low (0) = deterministic/focused · High (1+) = creative/varied</span></td>
+    </tr>
+    <tr>
+      <td class="term">Hallucination</td>
+      <td class="def">When a model confidently generates false or fabricated information. A key risk of LLMs.</td>
+    </tr>
+    <tr>
+      <td class="term">RAG (Retrieval-Augmented Generation)</td>
+      <td class="def">Combines an LLM with a retrieval step — grounds answers in real documents, reducing hallucinations.<br>
+        <span class="tip">Flow: Query → Retrieve docs → Augment prompt → Generate answer</span></td>
+    </tr>
+    <tr>
+      <td class="term">Fine-tuning</td>
+      <td class="def">Further training a pre-trained model on domain-specific data to specialize its behavior.<br>
+        <span class="tip">More expensive than prompting; better for consistent style or task</span></td>
+    </tr>
+    <tr>
+      <td class="term">Embedding</td>
+      <td class="def">Numerical vector representation of text (or data) capturing semantic meaning. Used in search &amp; RAG.</td>
+    </tr>
+    <tr>
+      <td class="term">Vector Database</td>
+      <td class="def">Stores embeddings for fast similarity search. Core component of RAG pipelines.<br>
+        <span class="tip">AWS options: Amazon OpenSearch, pgvector on Aurora</span></td>
+    </tr>
+    <tr>
+      <td class="term">Diffusion Model</td>
+      <td class="def">Generative model that creates images by learning to reverse a noise-addition process.<br>
+        <span class="tip">Examples: Stable Diffusion, Amazon Titan Image Generator</span></td>
+    </tr>
+    <tr>
+      <td class="term">Multimodal Model</td>
+      <td class="def">Model that processes multiple input types (text, image, audio). Can also generate across modalities.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="footer">
+  <span>AWS AI Practitioner · AIF-C01 · Domain 3 of 7</span>
+  <span><a href="domain4-bedrock.html" style="color:inherit">Next: Domain 4 — Amazon Bedrock →</a></span>
+</div>
+
+</body>
+</html>
