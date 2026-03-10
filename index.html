@@ -59,10 +59,93 @@
     font-family: 'IBM Plex Mono', monospace; font-size: 14px;
     margin-top: 20px; color: #1a6eb5; letter-spacing: 0.04em;
   }
-  .footer {
-    margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--border);
-    font-family: 'IBM Plex Mono', monospace; font-size: 13px;
-    color: var(--muted); letter-spacing: 0.04em; text-align: center;
+  .search-bar {
+    display: flex; gap: 10px; justify-content: center;
+    margin-top: 24px; flex-wrap: wrap;
+  }
+  .search-bar input {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 15px;
+    padding: 12px 18px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    width: 420px;
+    max-width: 100%;
+    outline: none;
+    background: var(--surface);
+    color: var(--text);
+    transition: border-color 0.15s;
+  }
+  .search-bar input:focus { border-color: #1a6eb5; }
+  .search-bar button {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 15px; font-weight: 700;
+    padding: 12px 24px;
+    background: #1a6eb5; color: #fff;
+    border: none; border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .search-bar button:hover { background: #155a9a; }
+
+  /* ── Dialog ── */
+  .dialog-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 100;
+    align-items: center; justify-content: center;
+  }
+  .dialog-overlay.open { display: flex; }
+  .dialog {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 36px 40px;
+    max-width: 560px; width: 90%;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    position: relative;
+    animation: popIn 0.18s ease;
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .dialog-close {
+    position: absolute; top: 16px; right: 20px;
+    font-size: 22px; cursor: pointer; color: var(--muted);
+    background: none; border: none; line-height: 1;
+  }
+  .dialog-close:hover { color: var(--text); }
+  .dialog h2 {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 1.1rem; font-weight: 800;
+    color: var(--text); margin-bottom: 20px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--border);
+  }
+  .dialog h2 span { color: #1a6eb5; }
+  .result-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--subtle);
+  }
+  .result-item:last-child { border-bottom: none; }
+  .result-term {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 15px; font-weight: 700; color: #1a1d23;
+    margin-bottom: 4px;
+  }
+  .result-domain {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; color: #1a6eb5;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .result-domain a {
+    color: #1a6eb5; text-decoration: none;
+    border-bottom: 1px solid #aac8e8;
+  }
+  .result-domain a:hover { border-bottom-color: #1a6eb5; }
+  .no-result {
+    font-size: 15px; color: var(--muted);
+    text-align: center; padding: 16px 0;
   }
 </style>
 </head>
@@ -71,6 +154,10 @@
 <div class="top">
   <h1>AWS <span>AI Practitioner</span><br>Glossary Index</h1>
   <p>AIF-C01 · 7 Domains · Click a domain to study</p>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search a term across all domains…" autocomplete="off" />
+    <button onclick="doSearch()">Search</button>
+  </div>
 </div>
 
 <div class="grid">
@@ -127,6 +214,189 @@
 </div>
 
 <div class="footer">AWS Certified AI Practitioner · AIF-C01 · Glossary Index</div>
+
+<!-- Search Dialog -->
+<div class="dialog-overlay" id="dialogOverlay" onclick="closeDialog(event)">
+  <div class="dialog" id="dialog">
+    <button class="dialog-close" onclick="closeDialogDirect()">✕</button>
+    <h2>Results for: <span id="dialogQuery"></span></h2>
+    <div id="dialogResults"></div>
+  </div>
+</div>
+
+<script>
+  const glossary = [
+    // Domain 1
+    { term: "Artificial Intelligence (AI)", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Machine Learning (ML)", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Deep Learning (DL)", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Supervised Learning", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Unsupervised Learning", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Reinforcement Learning", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Training Data", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Inference", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Overfitting", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Underfitting", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Feature Engineering", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Model Evaluation Metrics", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Confusion Matrix", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Hyperparameter", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Cross-validation", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Neural Network", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Transfer Learning", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Classification", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Regression", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    { term: "Labeled vs Unlabeled Data", domain: "Domain 1 — Core AI / ML Concepts", file: "domain1-core-ml.html" },
+    // Domain 2
+    { term: "Amazon Rekognition", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Textract", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Comprehend", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Comprehend Medical", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Transcribe", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Polly", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Translate", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Lex", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Kendra", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Personalize", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Forecast", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Fraud Detector", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Lookout for Vision", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "AWS DeepRacer", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "SageMaker JumpStart", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "AWS Panorama", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    { term: "Amazon Rekognition Custom Labels", domain: "Domain 2 — AWS AI / ML Services", file: "domain2-aws-ai-services.html" },
+    // Domain 3
+    { term: "Generative AI", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Foundation Model (FM)", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Large Language Model (LLM)", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Token", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Prompt", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Prompt Engineering", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Zero-shot Prompting", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Few-shot Prompting", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Chain-of-Thought (CoT)", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Context Window", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Temperature", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Top P (Nucleus Sampling)", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Top K", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Hallucination", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "RAG (Retrieval-Augmented Generation)", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Fine-tuning", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Embedding", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Vector Database", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Diffusion Model", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Multimodal Model", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "System Prompt", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Inference Parameters", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "RLHF (Reinforcement Learning from Human Feedback)", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Agent (AI)", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    { term: "Tokenization", domain: "Domain 3 — Generative AI Fundamentals", file: "domain3-generative-ai.html" },
+    // Domain 4
+    { term: "Amazon Bedrock", domain: "Domain 4 — Amazon Bedrock", file: "domain4-bedrock.html" },
+    { term: "Amazon Titan", domain: "Domain 4 — Amazon Bedrock", file: "domain4-bedrock.html" },
+    { term: "Bedrock Knowledge Bases", domain: "Domain 4 — Amazon Bedrock", file: "domain4-bedrock.html" },
+    { term: "Bedrock Agents", domain: "Domain 4 — Amazon Bedrock", file: "domain4-bedrock.html" },
+    { term: "Bedrock Guardrails", domain: "Domain 4 — Amazon Bedrock", file: "domain4-bedrock.html" },
+    { term: "Model Customization (Bedrock)", domain: "Domain 4 — Amazon Bedrock", file: "domain4-bedrock.html" },
+    { term: "Provisioned Throughput", domain: "Domain 4 — Amazon Bedrock", file: "domain4-bedrock.html" },
+    { term: "Model Evaluation (Bedrock)", domain: "Domain 4 — Amazon Bedrock", file: "domain4-bedrock.html" },
+    { term: "Amazon Bedrock Studio", domain: "Domain 4 — Amazon Bedrock", file: "domain4-bedrock.html" },
+    { term: "Amazon Q", domain: "Domain 4 — Amazon Bedrock", file: "domain4-bedrock.html" },
+    { term: "PartyRock", domain: "Domain 4 — Amazon Bedrock", file: "domain4-bedrock.html" },
+    // Domain 5
+    { term: "Amazon SageMaker", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "SageMaker Studio", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "SageMaker Autopilot", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "SageMaker Canvas", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "SageMaker Ground Truth", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "SageMaker Pipelines", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "SageMaker Model Monitor", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "SageMaker Feature Store", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "SageMaker Clarify", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "MLOps", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "Model Registry", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "Data Drift", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "Concept Drift", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "SageMaker Endpoints", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "SageMaker Experiments", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "SageMaker JumpStart", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    { term: "Batch Transform", domain: "Domain 5 — SageMaker & MLOps", file: "domain5-sagemaker-mlops.html" },
+    // Domain 6
+    { term: "Responsible AI", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Bias (AI)", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Fairness", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Explainability / XAI", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Transparency", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Privacy (AI)", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Robustness", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Human-in-the-Loop (HITL)", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Model Card", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "AWS AI Service Cards", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Prompt Injection", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Toxicity", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Intellectual Property / Copyright", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    { term: "Grounding", domain: "Domain 6 — Responsible AI & Ethics", file: "domain6-responsible-ai.html" },
+    // Domain 7
+    { term: "AWS Shared Responsibility Model", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "IAM (Identity & Access Management)", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "AWS KMS", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "VPC (Virtual Private Cloud)", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "Data Encryption", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "AWS CloudTrail", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "Amazon Macie", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "PII (Personally Identifiable Info)", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "Compliance Frameworks", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "AWS Artifact", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "Model Governance", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "Amazon GuardDuty", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "AWS Config", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+    { term: "Service Control Policies (SCPs)", domain: "Domain 7 — Security & Compliance", file: "domain7-security.html" },
+  ];
+
+  // Allow Enter key to trigger search
+  document.getElementById('searchInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') doSearch();
+  });
+
+  function doSearch() {
+    const query = document.getElementById('searchInput').value.trim();
+    if (!query) return;
+
+    const q = query.toLowerCase();
+    const matches = glossary.filter(item => item.term.toLowerCase().includes(q));
+
+    document.getElementById('dialogQuery').textContent = query;
+
+    const container = document.getElementById('dialogResults');
+    if (matches.length === 0) {
+      container.innerHTML = '<div class="no-result">No matching terms found across any domain.</div>';
+    } else {
+      container.innerHTML = matches.map(m => `
+        <div class="result-item">
+          <div class="result-term">${m.term}</div>
+          <div class="result-domain">→ <a href="${m.file}">${m.domain}</a></div>
+        </div>
+      `).join('');
+    }
+
+    document.getElementById('dialogOverlay').classList.add('open');
+  }
+
+  function closeDialog(e) {
+    if (e.target === document.getElementById('dialogOverlay')) {
+      document.getElementById('dialogOverlay').classList.remove('open');
+    }
+  }
+
+  function closeDialogDirect() {
+    document.getElementById('dialogOverlay').classList.remove('open');
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') document.getElementById('dialogOverlay').classList.remove('open');
+  });
+</script>
 
 </body>
 </html>
