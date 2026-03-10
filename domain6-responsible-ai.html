@@ -6,7 +6,7 @@
 <title>Domain 6 — Responsible AI &amp; Ethics</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  :root { --accent-color: #1d8a4a; --badge-bg: #d6f5e3; }
+  :root { --accent-color: #1a6eb5; --badge-bg: #ddeeff; }
 </style>
 </head>
 <body>
@@ -25,7 +25,7 @@
 <div class="page-header">
   <div>
     <h1><span class="domain-label">Responsible AI</span> &amp; Ethics</h1>
-    <div class="meta">Domain 6 · AIF-C01 · 11 Key Concepts</div>
+    <div class="meta">Domain 6 · AIF-C01 · 15 Key Concepts</div>
   </div>
   <span class="domain-badge">Domain 6</span>
 </div>
@@ -84,6 +84,20 @@
     <tr>
       <td class="term">Prompt Injection</td>
       <td class="def">Attack where malicious instructions are embedded in user input to hijack LLM behavior. A key GenAI security risk.</td>
+    </tr>
+    <tr>
+      <td class="term">Toxicity</td>
+      <td class="def">AI outputs that are harmful, offensive, abusive, or hateful. Responsible AI systems must detect and filter toxic content.<br>
+        <span class="tip">Mitigated by: Bedrock Guardrails, content filters, RLHF alignment</span></td>
+    </tr>
+    <tr>
+      <td class="term">Intellectual Property / Copyright</td>
+      <td class="def">Risk that FM outputs may reproduce copyrighted training data — text, code, or images — without authorisation. A legal and ethical concern.</td>
+    </tr>
+    <tr>
+      <td class="term">Grounding</td>
+      <td class="def">Connecting FM outputs to factual, verifiable sources to reduce hallucination and increase accuracy.<br>
+        <span class="tip">RAG is the primary grounding technique on AWS</span></td>
     </tr>
   </tbody>
 </table>
