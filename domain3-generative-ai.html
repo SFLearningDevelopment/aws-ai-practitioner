@@ -6,7 +6,7 @@
 <title>Domain 3 — Generative AI Fundamentals</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  :root { --accent-color: #1d8a4a; --badge-bg: #d6f5e3; }
+  :root { --accent-color: #1a6eb5; --badge-bg: #ddeeff; }
 </style>
 </head>
 <body>
@@ -25,7 +25,7 @@
 <div class="page-header">
   <div>
     <h1><span class="domain-label">Generative AI</span> Fundamentals</h1>
-    <div class="meta">Domain 3 · AIF-C01 · 18 Key Terms</div>
+    <div class="meta">Domain 3 · AIF-C01 · 20 Key Terms</div>
   </div>
   <span class="domain-badge">Domain 3</span>
 </div>
@@ -83,6 +83,16 @@
       <td class="term">Temperature</td>
       <td class="def">Controls randomness of output.<br>
         <span class="tip">Low (0) = deterministic/focused · High (1+) = creative/varied</span></td>
+    </tr>
+    <tr>
+      <td class="term">Top P (Nucleus Sampling)</td>
+      <td class="def">Limits the model to choosing from the smallest set of tokens whose combined probability adds up to P. Lower = more focused, higher = more diverse.<br>
+        <span class="tip">Example: Top P 0.9 = consider tokens covering 90% of probability mass</span></td>
+    </tr>
+    <tr>
+      <td class="term">Top K</td>
+      <td class="def">Limits the model to choosing from the K most likely next tokens only. Lower = more predictable, higher = more varied output.<br>
+        <span class="tip">Example: Top K 50 = only consider the 50 most probable tokens</span></td>
     </tr>
     <tr>
       <td class="term">Hallucination</td>
