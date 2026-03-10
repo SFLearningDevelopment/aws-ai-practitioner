@@ -6,7 +6,7 @@
 <title>Domain 5 — SageMaker &amp; MLOps</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  :root { --accent-color: #1d8a4a; --badge-bg: #d6f5e3; }
+  :root { --accent-color: #1a6eb5; --badge-bg: #ddeeff; }
 </style>
 </head>
 <body>
@@ -25,7 +25,7 @@
 <div class="page-header">
   <div>
     <h1>Amazon <span class="domain-label">SageMaker</span> &amp; MLOps</h1>
-    <div class="meta">Domain 5 · AIF-C01 · 13 Key Concepts</div>
+    <div class="meta">Domain 5 · AIF-C01 · 17 Key Concepts</div>
   </div>
   <span class="domain-badge">Domain 5</span>
 </div>
@@ -90,6 +90,25 @@
     <tr>
       <td class="term">Concept Drift</td>
       <td class="def">The relationship between inputs and outputs changes over time (world changes, model becomes stale).</td>
+    </tr>
+    <tr>
+      <td class="term">SageMaker Endpoints</td>
+      <td class="def">Deploys a trained model as a real-time HTTPS endpoint for live inference. Can be auto-scaled.<br>
+        <span class="tip">Real-time endpoint vs. Batch Transform — choose based on latency needs</span></td>
+    </tr>
+    <tr>
+      <td class="term">SageMaker Experiments</td>
+      <td class="def">Tracks, organises, and compares multiple training runs — parameters, metrics, and artifacts — to find the best model.</td>
+    </tr>
+    <tr>
+      <td class="term">SageMaker JumpStart</td>
+      <td class="def">Hub of pre-built models, solution templates, and algorithms deployable with one click. Includes open-source FMs like Llama.<br>
+        <span class="tip">Think: app store for ML models inside SageMaker</span></td>
+    </tr>
+    <tr>
+      <td class="term">Batch Transform</td>
+      <td class="def">Runs inference on large datasets offline (no live endpoint needed). Results saved to S3.<br>
+        <span class="tip">Use when: no real-time response needed, large volume of data</span></td>
     </tr>
   </tbody>
 </table>
