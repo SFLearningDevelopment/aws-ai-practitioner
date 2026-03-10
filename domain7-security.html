@@ -6,7 +6,7 @@
 <title>Domain 7 — Security &amp; Compliance</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  :root { --accent-color: #1d8a4a; --badge-bg: #d6f5e3; }
+  :root { --accent-color: #1a6eb5; --badge-bg: #ddeeff; }
 </style>
 </head>
 <body>
@@ -25,7 +25,7 @@
 <div class="page-header">
   <div>
     <h1><span class="domain-label">Security, Compliance</span> &amp; Governance</h1>
-    <div class="meta">Domain 7 · AIF-C01 · 11 Key Concepts</div>
+    <div class="meta">Domain 7 · AIF-C01 · 14 Key Concepts</div>
   </div>
   <span class="domain-badge">Domain 7</span>
 </div>
@@ -86,6 +86,20 @@
     <tr>
       <td class="term">Model Governance</td>
       <td class="def">Policies, processes, and tools to manage the AI model lifecycle — approval workflows, version control, and audit logs.</td>
+    </tr>
+    <tr>
+      <td class="term">Amazon GuardDuty</td>
+      <td class="def">Intelligent threat detection service using ML to monitor AWS accounts for malicious activity, anomalies, and unauthorized behavior.</td>
+    </tr>
+    <tr>
+      <td class="term">AWS Config</td>
+      <td class="def">Continuously monitors and records AWS resource configurations. Checks compliance against rules and flags drifts.<br>
+        <span class="tip">Think: audit trail for resource configuration changes</span></td>
+    </tr>
+    <tr>
+      <td class="term">Service Control Policies (SCPs)</td>
+      <td class="def">Organisation-level permission guardrails in AWS Organizations. Restrict what actions member accounts can perform — even admins.<br>
+        <span class="tip">SCPs do not grant permissions — they only restrict them</span></td>
     </tr>
   </tbody>
 </table>
